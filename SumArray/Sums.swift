@@ -21,6 +21,18 @@ import Foundation
 struct Sums {
   func sumItems(_ array: [Any]) -> Int {
     // Sum all numbers in the array
-    return -1
+    var total = 0
+    for number in array {
+      // recursive case
+      if let numArray = number as? [Any]{
+        total += sumItems(numArray)
+      }else {
+        // base case
+        if let num = number as? Int{
+          total += num
+        }
+      }
+    }
+    return total
   }
 }
